@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLDB PATH="local/airtable/db" VERSION="2024120700" COMMENT="Schema for Airtable plugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://github.com/moodle/moodle/blob/master/lib/xmldb/xmldb.xsd">
+
+    <TABLES> <!-- This section encloses all table definitions -->
+
+        <!-- Airtable records table -->
+        <TABLE NAME="local_airtable_records" COMMENT="Stores data synced from Airtable">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key"/>
+                <FIELD NAME="airtableid" TYPE="char" LENGTH="50" NOTNULL="true" COMMENT="Record ID in Airtable"/>
+                <FIELD NAME="tablename" TYPE="char" LENGTH="255" NOTNULL="true" COMMENT="Airtable table name"/>
+                <FIELD NAME="fielddata" TYPE="text" NOTNULL="false" COMMENT="Serialized fields from Airtable"/>
+                <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Last modified time"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="airtableid_idx" TYPE="unique" FIELDS="airtableid"/>
+            </KEYS>
+        </TABLE>
+
+    </TABLES>
+
+</XMLDB>
